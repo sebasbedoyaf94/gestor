@@ -59,7 +59,6 @@ class SiteController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-		
 
 		// collect user input data
 		if(isset($_POST['LoginForm']))

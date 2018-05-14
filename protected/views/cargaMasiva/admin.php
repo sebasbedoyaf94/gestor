@@ -1,5 +1,5 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - Administrar Carga Masiva';
+$this->pageTitle=Yii::app()->name . ' - Administrar Documentaciones';
 $this->breadcrumbs=array(
 	'Carga Masiva'=>array('index'),
 	'Cargas Masivas',
@@ -8,24 +8,24 @@ $this->breadcrumbs=array(
 ?>
 
 <div class="row text-center">
-	<h1>Cargas Masivas</h1>
+	<h1>Módulo de Documentación</h1>
 </div>
 
 <div class="row text-center">
 	<div class="row">
-		<!-- TURNOS -->
+		<!-- CARGA -->
 		<?php if (!empty(Yii::app()->session['permisosRol']['CargaMasiva'])): ?>
 			<a href="turnos" class="col-xs-12 col-sm-6">
-				<h4>Turnos</h4>
+				<h4>Carga</h4>
 				<img src="<?php echo Yii::app()->baseUrl.'/images/turnos.png'; ?>" class="img-responsive img-thumbnail img-menu well" alt=''/>
 			</a>
 		<?php endif ?>
 
-		<!-- ASESORES -->
+		<!-- CHECKLIST -->
 		<?php if (!empty(Yii::app()->session['permisosRol']['CargaMasiva'])): ?>
 			<a href="asesores" class="col-xs-12 col-sm-6">
-				<h4>Asesores</h4>
-				<img src="<?php echo Yii::app()->baseUrl.'/images/asesores.png'; ?>" class="img-responsive img-thumbnail img-menu well" alt=''/>
+				<h4>Checklist</h4>
+				<img src="<?php echo Yii::app()->baseUrl.'/images/contratos.png'; ?>" class="img-responsive img-thumbnail img-menu well" alt=''/>
 			</a>
 		<?php endif ?>
 
