@@ -34,8 +34,8 @@ $this->pageTitle=Yii::app()->name;
 
 	<div class="row">
 		<!-- PROYECTOS -->
-		<?php if (!empty(Yii::app()->session['permisosRol']['Contratos'])): ?>	
-			<a href="../contratos/admin" class="col-xs-12 col-sm-3">
+		<?php if (!empty(Yii::app()->session['permisosRol']['Proyectos'])): ?>	
+			<a href="../proyectos/admin" class="col-xs-12 col-sm-3">
 				<h4>Proyectos</h4>
 				<img src="<?php echo Yii::app()->baseUrl.'/images/contratos.png'; ?>" class="img-responsive img-thumbnail img-menu well" alt=''/>
 			</a>

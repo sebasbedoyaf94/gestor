@@ -3,16 +3,16 @@
 /* @var $model Proyectos */
 
 $this->breadcrumbs=array(
-	'Proyectoses'=>array('index'),
+	'Proyectos'=>array('index'),
 	'Create',
 );
 
 $this->menu=array(
-	array('label'=>'List Proyectos', 'url'=>array('index')),
-	array('label'=>'Manage Proyectos', 'url'=>array('admin')),
+	array('label'=>'Listar Proyectos', 'url'=>array('index')),
+	array('label'=>'Administrar Proyectos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Proyectos</h1>
+<h1>Crear Proyecto</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

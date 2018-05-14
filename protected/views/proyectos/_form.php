@@ -1,82 +1,63 @@
-<?php
-/* @var $this ProyectosController */
-/* @var $model Proyectos */
-/* @var $form CActiveForm */
-?>
-
-<div class="form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('booster.widgets.TbActiveForm',array(
 	'id'=>'proyectos-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
+	'enableClientValidation'=>true,
+	'clientOptions'=>array(
+            'validateOnSubmit'=>true,
+    ),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+<div class="row">
+	<div class="col-xs-12 col-sm-12 well">
+		<div class="col-xs-12 col-sm-12">
+			<h3 class='subtitulo'>Información del Proyecto</h3>
+		</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'proy_id'); ?>
-		<?php echo $form->textField($model,'proy_id'); ?>
-		<?php echo $form->error($model,'proy_id'); ?>
+		<div class="col-xs-12 col-sm-6">
+			<?php echo $form->textFieldGroup($model,'proy_nombre',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'')))); ?>
+		</div>
+		
+		<div class="col-xs-12 col-sm-6">
+			<?php echo $form->dropDownListGroup($model,'proy_cli_id',
+				array(
+					'wrapperHtmlOptions' => array(
+						'class' => '',
+					),
+					'widgetOptions' => array(
+						'data' => CHtml::listData(Clientes::model()->findAll(array("condition"=>"cli_habilitado='Si'")), 'cli_id', 'cli_nombre'),
+						'htmlOptions' => array(
+							'empty'=>'-- Selecciona un Cliente --',
+						),
+					),
+				)
+			); ?>
+		</div>
+
+		<div class="col-xs-12 col-sm-6">
+			<?php echo $form->datePickerGroup($model,'proy_fechaInicio',array('widgetOptions'=>array('options'=>array('format'=>'yyyy-mm-dd'),'htmlOptions'=>array('class'=>'')), 'prepend'=>'<i class="glyphicon glyphicon-calendar"></i>')); ?>
+		</div>
+
+		<div class="col-xs-12 col-sm-6">
+			<?php echo $form->datePickerGroup($model,'proy_fechaFin',array('widgetOptions'=>array('options'=>array('format'=>'yyyy-mm-dd'),'htmlOptions'=>array('class'=>'')), 'prepend'=>'<i class="glyphicon glyphicon-calendar"></i>')); ?>
+		</div>
+
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'proy_nombre'); ?>
-		<?php echo $form->textField($model,'proy_nombre',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'proy_nombre'); ?>
+	<div class="col-xs-12">
+		<p class="help-block">Los campos con <span class="required">*</span> son obligatorios.</p>
+		<?php echo $form->errorSummary($model); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'proy_cli_id'); ?>
-		<?php echo $form->textField($model,'proy_cli_id'); ?>
-		<?php echo $form->error($model,'proy_cli_id'); ?>
+	<div class="col-xs-12 text-center">
+		<div class="form-actions">
+			<?php $this->widget('booster.widgets.TbButton', array(
+					'buttonType'=>'submit',
+					'context'=>'primary',
+					'label'=>$model->isNewRecord ? 'Crear Proyecto' : 'Guardar Cambios',
+				)); ?>
+		</div>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'proy_fechaInicio'); ?>
-		<?php echo $form->textField($model,'proy_fechaInicio'); ?>
-		<?php echo $form->error($model,'proy_fechaInicio'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'proy_fechaFin'); ?>
-		<?php echo $form->textField($model,'proy_fechaFin'); ?>
-		<?php echo $form->error($model,'proy_fechaFin'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'proy_creadopor'); ?>
-		<?php echo $form->textField($model,'proy_creadopor'); ?>
-		<?php echo $form->error($model,'proy_creadopor'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'proy_fechacreado'); ?>
-		<?php echo $form->textField($model,'proy_fechacreado'); ?>
-		<?php echo $form->error($model,'proy_fechacreado'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'proy_modificadopor'); ?>
-		<?php echo $form->textField($model,'proy_modificadopor'); ?>
-		<?php echo $form->error($model,'proy_modificadopor'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'proy_fechamodificado'); ?>
-		<?php echo $form->textField($model,'proy_fechamodificado'); ?>
-		<?php echo $form->error($model,'proy_fechamodificado'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+</div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- form -->

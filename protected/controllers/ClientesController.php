@@ -70,9 +70,10 @@ class ClientesController extends Controller
 		if(isset($_POST['Clientes']))
 		{
 			$model->attributes=$_POST['Clientes'];
-			if($model->save())
+			if($model->save()){
 				Yii::app()->user->setFlash('success', "Creación exitosa.");
 				$this->redirect(array('view','id'=>$model->cli_id));
+			}	
 		}
 
 		$this->render('create',array(

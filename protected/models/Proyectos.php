@@ -36,7 +36,7 @@ class Proyectos extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('proy_id, proy_nombre, proy_cli_id, proy_fechaInicio, proy_fechaFin, proy_creadopor, proy_fechacreado, proy_modificadopor, proy_fechamodificado', 'required'),
+			array('proy_nombre, proy_cli_id, proy_fechaInicio, proy_fechaFin, proy_creadopor, proy_fechacreado, proy_modificadopor, proy_fechamodificado', 'required'),
 			array('proy_id, proy_cli_id, proy_creadopor, proy_modificadopor', 'numerical', 'integerOnly'=>true),
 			array('proy_nombre', 'length', 'max'=>255),
 			// The following rule is used by search().
@@ -55,6 +55,8 @@ class Proyectos extends CActiveRecord
 		return array(
 			'proyCli' => array(self::BELONGS_TO, 'Clientes', 'proy_cli_id'),
 			'usuariosProyectoses' => array(self::HAS_MANY, 'UsuariosProyectos', 'usuaproy_proy_id'),
+			'proyCreadopor' => array(self::BELONGS_TO, 'Usuarios', 'proy_creadopor'),
+			'proyModificadopor' => array(self::BELONGS_TO, 'Usuarios', 'proy_modificadopor'),
 		);
 	}
 
@@ -65,14 +67,14 @@ class Proyectos extends CActiveRecord
 	{
 		return array(
 			'proy_id' => 'Proyecto',
-			'proy_nombre' => 'Proy Nombre',
-			'proy_cli_id' => 'Proy Cli',
-			'proy_fechaInicio' => 'Proy Fecha Inicio',
-			'proy_fechaFin' => 'Proy Fecha Fin',
-			'proy_creadopor' => 'Proy Creadopor',
-			'proy_fechacreado' => 'Proy Fechacreado',
-			'proy_modificadopor' => 'Proy Modificadopor',
-			'proy_fechamodificado' => 'Proy Fechamodificado',
+			'proy_nombre' => 'Nombre',
+			'proy_cli_id' => 'Cliente',
+			'proy_fechaInicio' => 'Fecha Inicio',
+			'proy_fechaFin' => 'Fecha Fin',
+			'proy_creadopor' => 'Creado por',
+			'proy_fechacreado' => 'Fecha Creación',
+			'proy_modificadopor' => 'Modificado por',
+			'proy_fechamodificado' => 'Fecha Modificación',
 		);
 	}
 

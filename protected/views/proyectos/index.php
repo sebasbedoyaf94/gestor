@@ -3,12 +3,12 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Proyectoses',
+	'Proyectos',
 );
 
 $this->menu=array(
-	array('label'=>'Create Proyectos', 'url'=>array('create')),
-	array('label'=>'Manage Proyectos', 'url'=>array('admin')),
+	array('label'=>'Crear Proyectos', 'url'=>array('create')),
+	array('label'=>'Administrar Proyectos', 'url'=>array('admin')),
 );
 ?>
 

@@ -16,7 +16,7 @@ $this->menu=array(
 <h1>Administrar Cargas</h1>
 
 <?php $this->widget('booster.widgets.TbGridView',array(
-'id'=>'programas-grid',
+'id'=>'carga-grid',
 'dataProvider'=>$model->search(),
 'filter'=>$model,
 'htmlOptions' => array('style' => 'white-space: nowrap'),

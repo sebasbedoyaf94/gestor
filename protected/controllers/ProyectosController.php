@@ -27,17 +27,20 @@ class ProyectosController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+			array('allow',
+				'actions'=>array('index','view','admin'),
 				'users'=>array('@'),
+				'expression'=>"!empty(Yii::app()->session['permisosRol']['Proyectos']) || !empty(Yii::app()->session['permisosRol']['Proyectos']['Consultas'])",
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+			array('allow',
+				'actions'=>array('create'),
+				'users'=>array('@'),
+				'expression'=>"!empty(Yii::app()->session['permisosRol']['Proyectos']['Crear'])",
+			),
+			array('allow',
+				'actions'=>array('update'),
+				'users'=>array('@'),
+				'expression'=>"!empty(Yii::app()->session['permisosRol']['Proyectos']['Modificar'])",
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -69,14 +72,24 @@ class ProyectosController extends Controller
 
 		if(isset($_POST['Proyectos']))
 		{
+			$model->proy_creadopor = Yii::app()->session['login_usuarioid'];
+			$model->proy_fechacreado = date('Y-m-d H:i:s');
+			$model->proy_modificadopor = Yii::app()->session['login_usuarioid'];
+			$model->proy_fechamodificado = date('Y-m-d H:i:s');
 			$model->attributes=$_POST['Proyectos'];
-			if($model->save())
+
+			if($model->save()){
 				$this->redirect(array('view','id'=>$model->proy_id));
+				Yii::app()->user->setFlash('success', "Creación exitosa.");
+			}
 		}
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		if (Yii::app()->request->isAjaxRequest) {
+			$this->renderPartial('create', array('model'=>$model), false, true);
+		}
+		else{
+			$this->render('create',array('model'=>$model));
+		}
 	}
 
 	/**

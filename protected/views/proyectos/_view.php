@@ -5,16 +5,12 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('proy_id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->proy_id), array('view', 'id'=>$data->proy_id)); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('proy_nombre')); ?>:</b>
 	<?php echo CHtml::encode($data->proy_nombre); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('proy_cli_id')); ?>:</b>
-	<?php echo CHtml::encode($data->proy_cli_id); ?>
+	<?php echo CHtml::encode($data->proyCli->cli_nombre); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('proy_fechaInicio')); ?>:</b>
@@ -26,7 +22,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('proy_creadopor')); ?>:</b>
-	<?php echo CHtml::encode($data->proy_creadopor); ?>
+	<?php echo CHtml::encode($data->proyCreadopor->usua_usuariored); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('proy_fechacreado')); ?>:</b>
