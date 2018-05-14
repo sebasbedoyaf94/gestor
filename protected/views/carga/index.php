@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Carga', 'url'=>array('create')),
-	array('label'=>'Manage Carga', 'url'=>array('admin')),
+	array('label'=>'Crear Carga', 'url'=>array('create')),
+	array('label'=>'Administrar Cargas', 'url'=>array('admin')),
 );
 ?>
 

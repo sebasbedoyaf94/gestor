@@ -50,7 +50,7 @@ $this->pageTitle=Yii::app()->name;
 		<?php endif ?>
 
 		<!-- DOCUMENTACIONES -->
-		<?php if (!empty(Yii::app()->session['permisosRol']['Novedades'])): ?>	
+		<?php if (!empty(Yii::app()->session['permisosRol']['CargaMasiva'])): ?>	
 			<a href="../cargaMasiva/admin" class="col-xs-12 col-sm-3">
 				<h4>Documentación</h4>
 				<img src="<?php echo Yii::app()->baseUrl.'/images/novedades.png'; ?>" class="img-responsive img-thumbnail img-menu well" alt=''/>

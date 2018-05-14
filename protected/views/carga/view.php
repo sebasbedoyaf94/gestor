@@ -8,28 +8,40 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Carga', 'url'=>array('index')),
-	array('label'=>'Create Carga', 'url'=>array('create')),
-	array('label'=>'Update Carga', 'url'=>array('update', 'id'=>$model->carga_id)),
-	array('label'=>'Delete Carga', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->carga_id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Carga', 'url'=>array('admin')),
+	array('label'=>'Listar Cargas', 'url'=>array('index')),
+	array('label'=>'Crear Carga', 'url'=>array('create')),
+	array('label'=>'Administrar Cargas', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Carga #<?php echo $model->carga_id; ?></h1>
+<div class="col-xs-12 well">
+	<div class="col-xs-12">
+		<h3 class='subtitulo'>Información de la carga</h3>
+	</div>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'carga_id',
-		'carga_nombre_archivo',
-		'carga_ruta_archivo',
-		'carga_proy_id',
-		'carga_fase',
-		'carga_descripcion',
-		'carga_creadopor',
-		'carga_fechacreado',
-		'carga_modificadopor',
-		'carga_fechamodificado',
-	),
-)); ?>
+	<div class="col-xs-12">
+		<?php $this->widget('booster.widgets.TbDetailView',array(
+		'data'=>$model,
+		'attributes'=>array(
+				'carga_nombre_archivo',
+				array(
+					'name'=>'carga_proy_id',
+					'value'=>$model->cargaProy->proy_nombre,
+				),
+				'carga_fase',
+				'carga_descripcion',
+				array(
+					'name'=>'carga_creadopor',
+					'value'=>$model->cargaCreadopor->usua_usuariored,
+				),
+				'carga_fechacreado',
+				array(
+					'name'=>'carga_modificadopor',
+					'value'=>$model->cargaModificadopor->usua_usuariored,
+				),
+				'carga_fechamodificado',
+			),
+		)); ?>
+	</div>
+</div>
+

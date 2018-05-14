@@ -38,10 +38,11 @@ class Carga extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('carga_id, carga_nombre_archivo, carga_ruta_archivo, carga_proy_id, carga_fase, carga_descripcion, carga_creadopor, carga_fechacreado, carga_modificadopor, carga_fechamodificado', 'required'),
+			array('carga_nombre_archivo, carga_ruta_archivo, carga_proy_id, carga_fase, carga_descripcion, carga_creadopor, carga_fechacreado, carga_modificadopor, carga_fechamodificado', 'required'),
 			array('carga_id, carga_proy_id, carga_creadopor, carga_modificadopor', 'numerical', 'integerOnly'=>true),
 			array('carga_nombre_archivo, carga_ruta_archivo, carga_descripcion', 'length', 'max'=>255),
 			array('carga_fase', 'length', 'max'=>50),
+			array('carga_nombre_archivo','file','types'=>'jpg, png, xls, xlsx, doc, docx, pdf'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('carga_id, carga_nombre_archivo, carga_ruta_archivo, carga_proy_id, carga_fase, carga_descripcion, carga_creadopor, carga_fechacreado, carga_modificadopor, carga_fechamodificado', 'safe', 'on'=>'search'),
@@ -69,15 +70,15 @@ class Carga extends CActiveRecord
 	{
 		return array(
 			'carga_id' => 'Carga',
-			'carga_nombre_archivo' => 'Carga Nombre Archivo',
-			'carga_ruta_archivo' => 'Carga Ruta Archivo',
-			'carga_proy_id' => 'Carga Proy',
-			'carga_fase' => 'Carga Fase',
-			'carga_descripcion' => 'Carga Descripcion',
-			'carga_creadopor' => 'Carga Creadopor',
-			'carga_fechacreado' => 'Carga Fechacreado',
-			'carga_modificadopor' => 'Carga Modificadopor',
-			'carga_fechamodificado' => 'Carga Fechamodificado',
+			'carga_nombre_archivo' => 'Nombre Archivo',
+			'carga_ruta_archivo' => 'Ruta Archivo',
+			'carga_proy_id' => 'Proyecto',
+			'carga_fase' => 'Fase',
+			'carga_descripcion' => 'Descripción',
+			'carga_creadopor' => 'Creado por',
+			'carga_fechacreado' => 'Fecha creación',
+			'carga_modificadopor' => 'Modificado por',
+			'carga_fechamodificado' => 'Fecha modificación',
 		);
 	}
 

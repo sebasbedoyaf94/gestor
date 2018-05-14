@@ -27,20 +27,23 @@ class CargaController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+			array('allow',
+				'actions'=>array('index','view','admin'),
 				'users'=>array('@'),
+				'expression'=>"!empty(Yii::app()->session['permisosRol']['Carga']) || !empty(Yii::app()->session['permisosRol']['Carga']['Consultas'])",
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+			array('allow',
+				'actions'=>array('create'),
+				'users'=>array('@'),
+				'expression'=>"!empty(Yii::app()->session['permisosRol']['Carga']['Crear'])",
 			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
+			array('allow',
+				'actions'=>array('update'),
+				'users'=>array('@'),
+				'expression'=>"!empty(Yii::app()->session['permisosRol']['Carga']['Modificar'])",
+			),
+			array('deny',
+			'users'=>array('*'),
 			),
 		);
 	}
@@ -63,6 +66,7 @@ class CargaController extends Controller
 	public function actionCreate()
 	{
 		$model=new Carga;
+		$model_proyectos=new Proyectos;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -70,12 +74,26 @@ class CargaController extends Controller
 		if(isset($_POST['Carga']))
 		{
 			$model->attributes=$_POST['Carga'];
-			if($model->save())
+
+			$archivo=CUploadedFile::getInstance($model,'carga_nombre_archivo');
+			$model->carga_nombre_archivo = $archivo->name;
+			$model->carga_ruta_archivo = 'uploads/'.$archivo->name;
+			$model->carga_creadopor = Yii::app()->session['login_usuarioid']; 
+			$model->carga_fechacreado = date('Y-m-d H:i:s');
+			$model->carga_modificadopor = Yii::app()->session['login_usuarioid'];
+			$model->carga_fechamodificado = date('Y-m-d H:i:s');
+
+			if($model->save()){
+				//$archivo->saveAs(Yii::app()->basePath.'\uploads\n'.$archivo->name);
+				$archivo->saveAs('C:\Users\Sebas\Desktop\proyecto\n'.$archivo->name);
 				$this->redirect(array('view','id'=>$model->carga_id));
+			}
+				
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+			'model_proyectos'=>$model_proyectos,
 		));
 	}
 

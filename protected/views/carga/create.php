@@ -15,4 +15,4 @@ $this->menu=array(
 
 <h1>Create Carga</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model, 'model_proyectos'=>$model_proyectos)); ?>

@@ -64,7 +64,7 @@ class Proyectos extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'proy_id' => 'Proy',
+			'proy_id' => 'Proyecto',
 			'proy_nombre' => 'Proy Nombre',
 			'proy_cli_id' => 'Proy Cli',
 			'proy_fechaInicio' => 'Proy Fecha Inicio',

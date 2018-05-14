@@ -15,7 +15,7 @@ $this->breadcrumbs=array(
 	<div class="row">
 		<!-- CARGA -->
 		<?php if (!empty(Yii::app()->session['permisosRol']['CargaMasiva'])): ?>
-			<a href="turnos" class="col-xs-12 col-sm-6">
+			<a href="../carga/admin" class="col-xs-12 col-sm-6">
 				<h4>Carga</h4>
 				<img src="<?php echo Yii::app()->baseUrl.'/images/turnos.png'; ?>" class="img-responsive img-thumbnail img-menu well" alt=''/>
 			</a>
@@ -23,7 +23,7 @@ $this->breadcrumbs=array(
 
 		<!-- CHECKLIST -->
 		<?php if (!empty(Yii::app()->session['permisosRol']['CargaMasiva'])): ?>
-			<a href="asesores" class="col-xs-12 col-sm-6">
+			<a href="../checklist/admin" class="col-xs-12 col-sm-6">
 				<h4>Checklist</h4>
 				<img src="<?php echo Yii::app()->baseUrl.'/images/contratos.png'; ?>" class="img-responsive img-thumbnail img-menu well" alt=''/>
 			</a>

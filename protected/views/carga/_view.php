@@ -13,12 +13,8 @@
 	<?php echo CHtml::encode($data->carga_nombre_archivo); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('carga_ruta_archivo')); ?>:</b>
-	<?php echo CHtml::encode($data->carga_ruta_archivo); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('carga_proy_id')); ?>:</b>
-	<?php echo CHtml::encode($data->carga_proy_id); ?>
+	<?php echo CHtml::encode($data->cargaProy->proy_nombre); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('carga_fase')); ?>:</b>
@@ -30,14 +26,14 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('carga_creadopor')); ?>:</b>
-	<?php echo CHtml::encode($data->carga_creadopor); ?>
+	<?php echo CHtml::encode($data->cargaCreadopor->usua_usuariored); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('carga_fechacreado')); ?>:</b>
 	<?php echo CHtml::encode($data->carga_fechacreado); ?>
 	<br />
 
+	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('carga_modificadopor')); ?>:</b>
 	<?php echo CHtml::encode($data->carga_modificadopor); ?>
 	<br />
