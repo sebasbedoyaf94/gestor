@@ -72,15 +72,16 @@ class ProyectosController extends Controller
 
 		if(isset($_POST['Proyectos']))
 		{
+			$model->attributes=$_POST['Proyectos'];
 			$model->proy_creadopor = Yii::app()->session['login_usuarioid'];
 			$model->proy_fechacreado = date('Y-m-d H:i:s');
 			$model->proy_modificadopor = Yii::app()->session['login_usuarioid'];
 			$model->proy_fechamodificado = date('Y-m-d H:i:s');
-			$model->attributes=$_POST['Proyectos'];
 
 			if($model->save()){
+
 				$this->redirect(array('view','id'=>$model->proy_id));
-				Yii::app()->user->setFlash('success', "Creación exitosa.");
+				//Yii::app()->user->setFlash('success', "Creación exitosa.");
 			}
 		}
 
