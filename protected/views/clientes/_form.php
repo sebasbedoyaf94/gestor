@@ -1,40 +1,41 @@
-<?php
-/* @var $this ClientesController */
-/* @var $model Clientes */
-/* @var $form CActiveForm */
-?>
-
-<div class="form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('booster.widgets.TbActiveForm',array(
 	'id'=>'clientes-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+	'enableClientValidation'=>true,
+	'clientOptions'=>array(
+            'validateOnSubmit'=>true,
+    ),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+<div class="row">
+	<div class="col-xs-12 col-sm-12 well">
+		<div class="col-xs-12 col-sm-12">
+			<h3 class='subtitulo'>Información del Cliente</h3>
+		</div>
+		<div class="col-xs-12 col-sm-6">
+			<?php echo $form->textFieldGroup($model,'cli_nombre',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'')))); ?>
+		</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'cli_nombre'); ?>
-		<?php echo $form->textField($model,'cli_nombre',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'cli_nombre'); ?>
+		<div class="col-xs-12 col-sm-6">
+			<?php echo $form->dropDownListGroup($model,'cli_habilitado', array('widgetOptions'=>array('data'=>array("Si"=>"Si","No"=>"No",), 'htmlOptions'=>array('class'=>'input-large')))); ?>
+		</div>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'cli_habilitado'); ?>
-		<?php echo $form->textField($model,'cli_habilitado',array('size'=>2,'maxlength'=>2)); ?>
-		<?php echo $form->error($model,'cli_habilitado'); ?>
+	<div class="col-xs-12">
+		<p class="help-block">Los campos con <span class="required">*</span> son obligatorios.</p>
+		<?php echo $form->errorSummary($model); ?>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div class="col-xs-12 text-center">
+		<div class="form-actions">
+			<?php $this->widget('booster.widgets.TbButton', array(
+					'buttonType'=>'submit',
+					'context'=>'primary',
+					'label'=>$model->isNewRecord ? 'Crear Cliente' : 'Guardar Cambios',
+				)); ?>
+		</div>
 	</div>
+</div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- form -->
