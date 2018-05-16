@@ -3,19 +3,19 @@
 /* @var $model Proyectos */
 
 $this->breadcrumbs=array(
-	'Proyectoses'=>array('index'),
+	'Proyectos'=>array('index'),
 	$model->proy_id=>array('view','id'=>$model->proy_id),
-	'Update',
+	'Actualizar',
 );
 
 $this->menu=array(
-	array('label'=>'List Proyectos', 'url'=>array('index')),
-	array('label'=>'Create Proyectos', 'url'=>array('create')),
-	array('label'=>'View Proyectos', 'url'=>array('view', 'id'=>$model->proy_id)),
-	array('label'=>'Manage Proyectos', 'url'=>array('admin')),
+	array('label'=>'Listar Proyectos', 'url'=>array('index')),
+	array('label'=>'Crear Proyectos', 'url'=>array('create')),
+	array('label'=>'Ver Proyectos', 'url'=>array('view', 'id'=>$model->proy_id)),
+	array('label'=>'Administrar Proyectos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Proyectos <?php echo $model->proy_id; ?></h1>
+<h1>Actualizar proyecto</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -1,6 +1,6 @@
 <?php $form=$this->beginWidget('booster.widgets.TbActiveForm',array(
 	'id'=>'proyectos-form',
-	'enableAjaxValidation'=>true,
+	'enableAjaxValidation'=>false,
 	'enableClientValidation'=>true,
 	'clientOptions'=>array(
             'validateOnSubmit'=>true,
@@ -40,6 +40,10 @@
 
 		<div class="col-xs-12 col-sm-6">
 			<?php echo $form->datePickerGroup($model,'proy_fechaFin',array('widgetOptions'=>array('options'=>array('format'=>'yyyy-mm-dd'),'htmlOptions'=>array('class'=>'')), 'prepend'=>'<i class="glyphicon glyphicon-calendar"></i>')); ?>
+		</div>
+
+		<div class="col-xs-12 col-sm-6">
+			<?php echo $form->dropDownListGroup($model,'proy_habilitado', array('widgetOptions'=>array('data'=>array("Si"=>"Si","No"=>"No",), 'htmlOptions'=>array('class'=>'input-large')))); ?>
 		</div>
 
 	</div>

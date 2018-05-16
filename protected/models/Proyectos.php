@@ -75,6 +75,7 @@ class Proyectos extends CActiveRecord
 			'proy_fechacreado' => 'Fecha Creación',
 			'proy_modificadopor' => 'Modificado por',
 			'proy_fechamodificado' => 'Fecha Modificación',
+			'proy_habilitado' => 'Habilitado',
 		);
 	}
 

@@ -79,9 +79,8 @@ class ProyectosController extends Controller
 			$model->proy_fechamodificado = date('Y-m-d H:i:s');
 
 			if($model->save()){
-
+				Yii::app()->user->setFlash('success', "Creación exitosa.");
 				$this->redirect(array('view','id'=>$model->proy_id));
-				//Yii::app()->user->setFlash('success', "Creación exitosa.");
 			}
 		}
 

@@ -3,32 +3,41 @@
 /* @var $model Proyectos */
 
 $this->breadcrumbs=array(
-	'Proyectoses'=>array('index'),
-	$model->proy_id,
+	'Proyectos'=>array('index'),
+	$model->proy_nombre,
 );
 
 $this->menu=array(
-	array('label'=>'List Proyectos', 'url'=>array('index')),
-	array('label'=>'Create Proyectos', 'url'=>array('create')),
-	array('label'=>'Update Proyectos', 'url'=>array('update', 'id'=>$model->proy_id)),
-	array('label'=>'Delete Proyectos', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->proy_id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Proyectos', 'url'=>array('admin')),
+	array('label'=>'Listar Proyectos', 'url'=>array('index')),
+	array('label'=>'Crear Proyectos', 'url'=>array('create')),
+	array('label'=>'Actualizar Proyectos', 'url'=>array('update', 'id'=>$model->proy_id)),
+	array('label'=>'Administrar Proyectos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Proyectos #<?php echo $model->proy_id; ?></h1>
+<div class="col-xs-12 well">
+	<div class="col-xs-12">
+		<h3 class='subtitulo'>Información del Proyecto</h3>
+	</div>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'proy_id',
-		'proy_nombre',
-		'proy_cli_id',
-		'proy_fechaInicio',
-		'proy_fechaFin',
-		'proy_creadopor',
-		'proy_fechacreado',
-		'proy_modificadopor',
-		'proy_fechamodificado',
-	),
-)); ?>
+	<div class="col-xs-12">
+		<?php $this->widget('booster.widgets.TbDetailView',array(
+		'data'=>$model,
+		'attributes'=>array(
+				'proy_nombre',
+				array(
+			        'name'=>'proy_cli_id',
+			        'value'=>$model->proyCli->cli_nombre,
+			    ),
+				'proy_fechaInicio',
+				'proy_fechaFin',
+				'proy_habilitado',
+				array(
+			        'name'=>'proy_creadopor',
+			        'value'=>$model->proyCreadopor->usua_usuariored,
+			    ),
+				'proy_fechacreado',
+			),
+		)); ?>
+	</div>
+</div>
