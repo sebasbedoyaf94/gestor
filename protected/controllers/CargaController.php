@@ -77,15 +77,15 @@ class CargaController extends Controller
 
 			$archivo=CUploadedFile::getInstance($model,'carga_nombre_archivo');
 			$model->carga_nombre_archivo = $archivo->name;
-			$model->carga_ruta_archivo = 'uploads/'.$archivo->name;
+			$model->carga_ruta_archivo = 'C:/wamp/www/gestor/uploads/'.$archivo->name;
 			$model->carga_creadopor = Yii::app()->session['login_usuarioid']; 
 			$model->carga_fechacreado = date('Y-m-d H:i:s');
 			$model->carga_modificadopor = Yii::app()->session['login_usuarioid'];
 			$model->carga_fechamodificado = date('Y-m-d H:i:s');
 
 			if($model->save()){
+				$archivo->saveAs("C:/wamp/www/gestor/uploads/".$archivo->name);
 				//$archivo->saveAs(Yii::app()->basePath.'\uploads\n'.$archivo->name);
-				$archivo->saveAs('C:\Users\Sebas\Desktop\proyecto\n'.$archivo->name);
 				$this->redirect(array('view','id'=>$model->carga_id));
 			}
 				
