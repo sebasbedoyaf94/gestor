@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Checklist', 'url'=>array('create')),
-	array('label'=>'Manage Checklist', 'url'=>array('admin')),
+	array('label'=>'Crear Checklist', 'url'=>array('create')),
+	array('label'=>'Administrar Checklist', 'url'=>array('admin')),
 );
 ?>
 

@@ -5,12 +5,8 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('check_id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->check_id), array('view', 'id'=>$data->check_id)); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('check_proy_id')); ?>:</b>
-	<?php echo CHtml::encode($data->check_proy_id); ?>
+	<?php echo CHtml::encode($data->checkProy->proy_nombre); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('check_url_pruebas')); ?>:</b>
@@ -33,27 +29,8 @@
 	<?php echo CHtml::encode($data->check_usuario_pruebas); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('check_contrasena_pruebas')); ?>:</b>
 	<?php echo CHtml::encode($data->check_contrasena_pruebas); ?>
 	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('check_creadopor')); ?>:</b>
-	<?php echo CHtml::encode($data->check_creadopor); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('check_fechacreado')); ?>:</b>
-	<?php echo CHtml::encode($data->check_fechacreado); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('check_modificadopor')); ?>:</b>
-	<?php echo CHtml::encode($data->check_modificadopor); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('check_fechamodificado')); ?>:</b>
-	<?php echo CHtml::encode($data->check_fechamodificado); ?>
-	<br />
-
-	*/ ?>
 
 </div>

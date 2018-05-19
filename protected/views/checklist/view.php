@@ -15,22 +15,36 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Checklist #<?php echo $model->check_id; ?></h1>
+<div class="col-xs-12 well">
+	<div class="col-xs-12">
+		<h3 class='subtitulo'>Información del Checklist</h3>
+	</div>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'check_id',
-		'check_proy_id',
-		'check_url_pruebas',
-		'check_ruta_doc_funcional',
-		'check_ruta_doc_tecnica',
-		'check_observaciones',
-		'check_usuario_pruebas',
-		'check_contrasena_pruebas',
-		'check_creadopor',
-		'check_fechacreado',
-		'check_modificadopor',
-		'check_fechamodificado',
-	),
-)); ?>
+	<div class="col-xs-12">
+		<?php $this->widget('booster.widgets.TbDetailView',array(
+		'data'=>$model,
+		'attributes'=>array(
+				array(
+					'name'=>'check_proy_id',
+					'value'=>$model->checkProy->proy_nombre,
+				),
+				'check_url_pruebas',
+				'check_ruta_doc_funcional',
+				'check_ruta_doc_tecnica',
+				'check_observaciones',
+				'check_usuario_pruebas',
+				'check_contrasena_pruebas',
+				array(
+					'name'=>'check_creadopor',
+					'value'=>$model->checkCreadopor->usua_usuariored,
+				),
+				'check_fechacreado',
+				array(
+					'name'=>'check_modificadopor',
+					'value'=>$model->checkModificadopor->usua_usuariored,
+				),
+				'check_fechamodificado',
+			),
+		)); ?>
+	</div>
+</div>
