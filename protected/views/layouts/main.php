@@ -92,90 +92,26 @@ $(document).ready(function(){
 							                        'visible' => (!empty(Yii::app()->session['permisosRol']['Clientes']) and !Yii::app()->user->isGuest) ? true : false,
 							                    ),
 
-							                    //Menu Programas
+							                    //Menu Proyectos
 							                    array(
-							                        'label' => '<span class="glyphicon glyphicon-list text-danger"></span> Programas',
+							                        'label' => '<span class="glyphicon glyphicon-list text-danger"></span> Proyectos',
+							                        'url'=>array('/proyectos/admin'),
+							                        'visible' => (!empty(Yii::app()->session['permisosRol']['Proyectos']) and !Yii::app()->user->isGuest) ? true : false,
+							                    ),
+												
+												//Menu Analistas Proyectos
+							                    array(
+							                        'label' => '<span class="glyphicon glyphicon-list text-danger"></span> Analistas Proyectos',
 							                        'url'=>array('/programas/admin'),
 							                        'visible' => (!empty(Yii::app()->session['permisosRol']['Programas']) and !Yii::app()->user->isGuest) ? true : false,
 							                    ),
 
-							                    //Menu Servicios
+							                    //Menu Documentación
 							                    array(
-							                        'label' => '<span class="glyphicon glyphicon-list text-danger"></span> Servicios',
-							                        'url'=>array('/servicios/admin'),
-							                        'visible' => (!empty(Yii::app()->session['permisosRol']['Servicios']) and !Yii::app()->user->isGuest) ? true : false,
-							                    ),
-
-							                    //Menu Contratos
-							                    array(
-							                        'label' => '<span class="glyphicon glyphicon-list text-danger"></span> Contratos',
-							                        'url'=>array('/contratos/admin'),
-							                        'visible' => (!empty(Yii::app()->session['permisosRol']['Contratos']) and !Yii::app()->user->isGuest) ? true : false,
-							                    ),
-												
-												//Menu Novedades
-							                    array(
-							                        'label' => '<span class="glyphicon glyphicon-list text-danger"></span> Novedades',
-							                        'url'=>array('/novedades/admin'),
-							                        'visible' => (!empty(Yii::app()->session['permisosRol']['Novedades']) and !Yii::app()->user->isGuest) ? true : false,
-							                    ),
-
-							                    //Menu Turnos
-							                    array(
-					                            	'label'=>'<span class="glyphicon glyphicon-list text-danger"></span> Turnos ',
+					                            	'label'=>'<span class="glyphicon glyphicon-list text-danger"></span> Documentación ',
 					                            	'url'=>array('/turnos/admin'), 
 					                        		'visible' => (!empty(Yii::app()->session['permisosRol']['Turnos']) and !Yii::app()->user->isGuest) ? true : false,
 					                            ),
-												
-												//Menu Asesores
-							                    array(
-					                            	'label'=>'<span class="glyphicon glyphicon-list text-danger"></span> Asesores ',
-					                            	'url'=>array('/asesores/admin'), 
-					                        		'visible' => (!empty(Yii::app()->session['permisosRol']['Asesores']) and !Yii::app()->user->isGuest) ? true : false,
-					                            ),
-
-					                            //Menu Turnos Servicios
-					                            array(
-					                            	'label'=>'<span class="glyphicon glyphicon-list text-danger"></span> Turnos Servicios ',
-					                            	'url'=>array('/turnosServicios/admin'), 
-					                        		'visible' => (!empty(Yii::app()->session['permisosRol']['TurnosServicios']) and !Yii::app()->user->isGuest) ? true : false,
-					                            ),
-
-					                            //Menu Carga Masiva
-					                            array(
-					                            	'label'=>'<span class="glyphicon glyphicon-list text-danger"></span> Carga Masiva ',
-					                            	'url'=>array('/cargaMasiva/admin'), 
-					                        		'visible' => (!empty(Yii::app()->session['permisosRol']['CargaMasiva']) and !Yii::app()->user->isGuest) ? true : false,
-					                            ),
-
-					                            //Menu Turnos Novedades
-					                            array(
-					                            	'label'=>'<span class="glyphicon glyphicon-list text-danger"></span> Turnos Novedades ',
-					                            	'url'=>array('/turnosNovedades/admin'), 
-					                        		'visible' => (!empty(Yii::app()->session['permisosRol']['TurnosNovedades']) and !Yii::app()->user->isGuest) ? true : false,
-					                            ),
-
-					                            //Menu Turnos Asesores
-					                            array(
-					                            	'label'=>'<span class="glyphicon glyphicon-list text-danger"></span> Turnos Asesores ',
-					                            	'url'=>array('/turnosAsesores/admin'), 
-					                        		'visible' => (!empty(Yii::app()->session['permisosRol']['TurnosAsesores']) and !Yii::app()->user->isGuest) ? true : false,
-					                            ),
-
-					                            //Menu Asesores Servicios
-					                            array(
-					                            	'label'=>'<span class="glyphicon glyphicon-list text-danger"></span> Asesores Servicios ',
-					                            	'url'=>array('/asesoresServicios/admin'), 
-					                        		'visible' => (!empty(Yii::app()->session['permisosRol']['AsesoresServicios']) and !Yii::app()->user->isGuest) ? true : false,
-					                            ),
-
-					                            //Menu Novedades Asesores
-					                            array(
-					                            	'label'=>'<span class="glyphicon glyphicon-list text-danger"></span> Novedades Asesores ',
-					                            	'url'=>array('/novedadesAsesores/admin'), 
-					                        		'visible' => (!empty(Yii::app()->session['permisosRol']['NovedadesAsesores']) and !Yii::app()->user->isGuest) ? true : false,
-					                            ),
-
 					                        )
 					                    ),
 																					

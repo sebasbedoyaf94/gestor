@@ -4,15 +4,15 @@
 
 $this->breadcrumbs=array(
 	'Cargas'=>array('index'),
-	'Create',
+	'Crear',
 );
 
 $this->menu=array(
-	array('label'=>'List Carga', 'url'=>array('index')),
-	array('label'=>'Manage Carga', 'url'=>array('admin')),
+	array('label'=>'Listar Cargas', 'url'=>array('index')),
+	array('label'=>'Administrar Cargas', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Carga</h1>
+<h1>Crear Carga</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model, 'model_proyectos'=>$model_proyectos)); ?>

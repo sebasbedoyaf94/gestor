@@ -85,6 +85,7 @@ class CargaController extends Controller
 
 			if($model->save()){
 				$archivo->saveAs("C:/wamp/www/gestor/uploads/".$archivo->name);
+				Yii::app()->user->setFlash('success', "Carga exitosa.");
 				//$archivo->saveAs(Yii::app()->basePath.'\uploads\n'.$archivo->name);
 				$this->redirect(array('view','id'=>$model->carga_id));
 			}
