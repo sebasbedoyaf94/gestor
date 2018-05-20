@@ -73,7 +73,7 @@ return array(
 
 		// database settings are configured in database.php
 		'db'=>array(
-		    'connectionString' => 'mysql:host=localhost;dbname=programacion_turnos',
+		    'connectionString' => 'mysql:host=localhost;dbname=gestor',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
