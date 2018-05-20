@@ -41,12 +41,20 @@ $this->menu=array(
 		array(
 			'htmlOptions' => array('nowrap'=>'nowrap'),
 			'class'=>'booster.widgets.TbButtonColumn',
-			'template' => '{view}',
+			'template' => '{view} {download}',
 			'buttons' => array(
 	            'view' => array(
 	                'options' => array(
 	                	'title' => Yii::t('app', 'Ver'),
 	                ),
+	            ),
+	            'download' => array(
+	            	'label' => 'Descargar',
+                    'icon' => 'download',
+                    'url'=>'Yii::app()->createUrl("carga/download", array("fileName"=>$data->carga_nombre_archivo))',
+                    'options'=>array(
+                        'class'=>'btn btn-small',
+                    ),
 	            ),           
 	        ),
 		),

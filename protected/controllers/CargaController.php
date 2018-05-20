@@ -28,7 +28,7 @@ class CargaController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index','view','admin'),
+				'actions'=>array('index','view','admin', 'download'),
 				'users'=>array('@'),
 				'expression'=>"!empty(Yii::app()->session['permisosRol']['Carga']) || !empty(Yii::app()->session['permisosRol']['Carga']['Consultas'])",
 			),
@@ -160,6 +160,22 @@ class CargaController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+
+	/**
+	* Download files
+	*/
+	public function actionDownload($fileName)
+	{
+  		$name = 'C:/wamp/www/gestor/uploads/'.$fileName;
+  		$fp = fopen($name, 'rb');
+
+  		header("Content-Type: text/plain");
+  		header("Content-disposition: attachment; filename=$fileName");
+  		//header("Content-Length: " . filesize($name));
+
+  		fpassthru($fp);
+		exit;
 	}
 
 	/**

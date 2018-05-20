@@ -70,7 +70,7 @@ class Carga extends CActiveRecord
 	{
 		return array(
 			'carga_id' => 'Carga',
-			'carga_nombre_archivo' => 'Nombre Archivo',
+			'carga_nombre_archivo' => 'Archivo',
 			'carga_ruta_archivo' => 'Ruta Archivo',
 			'carga_proy_id' => 'Proyecto',
 			'carga_fase' => 'Fase',
