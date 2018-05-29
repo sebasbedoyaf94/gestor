@@ -30,7 +30,7 @@ class UsuariosProyectos extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('usuaproy_id, usuaproy_usua_id, usuaproy_proy_id', 'required'),
+			array('usuaproy_usua_id, usuaproy_proy_id', 'required'),
 			array('usuaproy_id, usuaproy_usua_id, usuaproy_proy_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -58,8 +58,8 @@ class UsuariosProyectos extends CActiveRecord
 	{
 		return array(
 			'usuaproy_id' => 'Usuaproy',
-			'usuaproy_usua_id' => 'Usuaproy Usua',
-			'usuaproy_proy_id' => 'Usuaproy Proy',
+			'usuaproy_usua_id' => 'Usuario',
+			'usuaproy_proy_id' => 'Proyecto',
 		);
 	}
 

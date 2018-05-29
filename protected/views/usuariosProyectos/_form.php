@@ -1,46 +1,71 @@
-<?php
-/* @var $this UsuariosProyectosController */
-/* @var $model UsuariosProyectos */
-/* @var $form CActiveForm */
-?>
-
-<div class="form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('booster.widgets.TbActiveForm',array(
 	'id'=>'usuarios-proyectos-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+	'enableClientValidation'=>true,
+	'clientOptions'=>array(
+            'validateOnSubmit'=>true,
+    ),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+<div class="row">
+	<div class="col-xs-12 col-sm-12 well">
+		<div class="col-xs-12 col-sm-12">
+			<h3 class='subtitulo'>Información</h3>
+		</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'usuaproy_id'); ?>
-		<?php echo $form->textField($model,'usuaproy_id'); ?>
-		<?php echo $form->error($model,'usuaproy_id'); ?>
+		<div class="col-xs-12 col-sm-6">
+			<?php echo $form->dropDownListGroup($model,'usuaproy_usua_id',
+				array(
+					'wrapperHtmlOptions' => array(
+						'class' => '',
+					),
+					'widgetOptions' => array(
+						'data' => CHtml::listData(Usuarios::model()->findAll(array("condition"=>"usua_habilitado='Si'")), 'usua_id', function($usua) {
+							    return CHtml::encode($usua->usua_nombre . " " . $usua->usua_apellidos);
+							}),
+						'htmlOptions' => array(
+							'empty'=>'-- Selecciona un Usuario --',
+						),
+					),
+				)
+			); ?>
+		</div>
+
+		<div class="col-xs-12 col-sm-6">
+			<?php echo $form->dropDownListGroup($model,'usuaproy_proy_id',
+				array(
+					'wrapperHtmlOptions' => array(
+						'class' => '',
+					),
+					'widgetOptions' => array(
+						'data' => CHtml::listData(Proyectos::model()->findAll(array("condition"=>"proy_habilitado='Si'")), 'proy_id', function($proy) {
+							    return CHtml::encode($proy->proy_nombre . " (" . $proy->proyCli->cli_nombre.")");
+							}),
+						'htmlOptions' => array(
+							'empty'=>'-- Seleccione un Proyecto --',
+						),
+					),
+				)
+			); ?>
+		</div>
+
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'usuaproy_usua_id'); ?>
-		<?php echo $form->textField($model,'usuaproy_usua_id'); ?>
-		<?php echo $form->error($model,'usuaproy_usua_id'); ?>
+	<div class="col-xs-12">
+		<p class="help-block">Los campos con <span class="required">*</span> son obligatorios.</p>
+		<?php echo $form->errorSummary($model); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'usuaproy_proy_id'); ?>
-		<?php echo $form->textField($model,'usuaproy_proy_id'); ?>
-		<?php echo $form->error($model,'usuaproy_proy_id'); ?>
+	<div class="col-xs-12 text-center">
+		<div class="form-actions">
+			<?php $this->widget('booster.widgets.TbButton', array(
+					'buttonType'=>'submit',
+					'context'=>'primary',
+					'label'=>$model->isNewRecord ? 'Crear' : 'Guardar Cambios',
+				)); ?>
+		</div>
 	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+</div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- form -->

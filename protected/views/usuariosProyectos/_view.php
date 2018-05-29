@@ -5,16 +5,12 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('usuaproy_id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->usuaproy_id), array('view', 'id'=>$data->usuaproy_id)); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('usuaproy_usua_id')); ?>:</b>
-	<?php echo CHtml::encode($data->usuaproy_usua_id); ?>
+	<?php echo CHtml::encode($data->usuaproyUsua->usua_nombre ." ". $data->usuaproyUsua->usua_apellidos); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('usuaproy_proy_id')); ?>:</b>
-	<?php echo CHtml::encode($data->usuaproy_proy_id); ?>
+	<?php echo CHtml::encode($data->usuaproyProy->proy_nombre . " (" . $data->usuaproyProy->proyCli->cli_nombre . ")"); ?>
 	<br />
 
 

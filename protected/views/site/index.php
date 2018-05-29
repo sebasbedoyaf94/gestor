@@ -43,7 +43,7 @@ $this->pageTitle=Yii::app()->name;
 
 		<!-- ANALISTAS PROYECTOS -->
 		<?php if (!empty(Yii::app()->session['permisosRol']['Programas'])): ?>	
-			<a href="../programas/admin" class="col-xs-12 col-sm-3">
+			<a href="../usuariosProyectos/admin" class="col-xs-12 col-sm-3">
 				<h4>Analistas Proyectos</h4>
 				<img src="<?php echo Yii::app()->baseUrl.'/images/programas.png'; ?>" class="img-responsive img-thumbnail img-menu well" alt=''/>
 			</a>

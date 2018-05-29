@@ -3,53 +3,52 @@
 /* @var $model UsuariosProyectos */
 
 $this->breadcrumbs=array(
-	'Usuarios Proyectoses'=>array('index'),
-	'Manage',
+	'Usuarios Proyectos'=>array('index'),
+	'Administrar',
 );
 
 $this->menu=array(
-	array('label'=>'List UsuariosProyectos', 'url'=>array('index')),
-	array('label'=>'Create UsuariosProyectos', 'url'=>array('create')),
+	array('label'=>'Listar Usuarios Proyectos', 'url'=>array('index')),
+	array('label'=>'Crear Usuarios Proyectos', 'url'=>array('create')),
 );
 
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#usuarios-proyectos-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
 ?>
 
-<h1>Manage Usuarios Proyectoses</h1>
+<h1>Administrar Usuarios Proyectos</h1>
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
-
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
-
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'usuarios-proyectos-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'usuaproy_id',
-		'usuaproy_usua_id',
-		'usuaproy_proy_id',
+<?php $this->widget('booster.widgets.TbGridView',array(
+'id'=>'usuarios-proyectos-grid',
+'dataProvider'=>$model->search(),
+'filter'=>$model,
+'htmlOptions' => array('style' => 'white-space: nowrap'),
+'columns'=>array(
 		array(
-			'class'=>'CButtonColumn',
+			'name' => 'usuaproy_usua_id',
+			'value' => '$data->usuaproyUsua->usua_nombre',
+			'filter' => CHtml::textField('usuaProy_usua_nombre', Yii::app()->request->getParam('usuaProy_usua_nombre')),
 		),
-	),
+		array(
+			'name' => 'usuaproy_proy_id',
+			'value' => '$data->usuaproyProy->proy_nombre',
+			'filter' => CHtml::textField('usuaProy_proy_nombre', Yii::app()->request->getParam('usuaProy_proy_nombre')),
+		),
+		array(
+			'htmlOptions' => array('nowrap'=>'nowrap'),
+			'class'=>'booster.widgets.TbButtonColumn',
+			'template' => '{view} {update}',
+			'buttons' => array(
+	            'view' => array(
+	                'options' => array(
+	                	'title' => Yii::t('app', 'Ver'),
+	                ),
+	            ),
+	            'update' => array(
+	            	'visible'=>"!empty(Yii::app()->session['permisosRol']['UsuariosProyectos']['Modificar'])",
+	                'options' => array(
+	                	'title' => Yii::t('app', 'Modificar'),
+	                ),
+	            ),            
+	        ),
+		),
+),
 )); ?>
