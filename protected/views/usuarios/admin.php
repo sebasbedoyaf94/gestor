@@ -10,16 +10,6 @@ $this->menu=array(
 	array('label'=>'Crear Usuario',
 		'url'=>array('create'),
 		'visible'=>!empty(Yii::app()->session['permisosRol']['Usuarios']['Crear']),
-		// 'linkOptions' => array(
-		//  	'ajax'=>array(
-  //               'type'=>'POST',
-  //               'url'=>"js:$(this).attr('href')",
-  //               'success'=>'function(data) { 
-  //               	$("#viewModal .modal-body").html(data); 
-  //               	$("#viewModal").modal(); 
-  //               }'
-  //           )	
-		//  )
 	),
 );
 
@@ -36,17 +26,18 @@ $this->menu=array(
 		array(
 			'name' => 'usua_nombre',
 			'value' => '$data->usua_nombre',
-			// 'filter'=> CHtml::listData(Usuarios::model()->findAll(), 'usua_nombre', 'usua_nombre'),
 		),
 		array(
 			'name' => 'usua_apellidos',
 			'value' => '$data->usua_apellidos',
-			// 'filter'=> CHtml::listData(Usuarios::model()->findAll(), 'usua_apellidos', 'usua_apellidos'),
+		),
+		array(
+			'name' => 'usua_cedula',
+			'value' => '$data->usua_cedula',
 		),
 		array(
 			'name' => 'usua_usuariored',
 			'value' => '$data->usua_usuariored',
-			// 'filter'=> CHtml::listData(Usuarios::model()->findAll(), 'usua_usuariored', 'usua_usuariored'),
 		),
 		array(
 			'name' => 'usua_rol_id',
@@ -58,28 +49,6 @@ $this->menu=array(
 			'value' => '$data->usua_habilitado',
 			'filter'=> CHtml::listData(Usuarios::model()->findAll(), 'usua_habilitado', 'usua_habilitado'),
 		),
-		/*
-		array(
-			'name' => 'usua_fechacreado',
-			'value' => '$data->usua_fechacreado',
-			// 'filter'=> CHtml::listData(Usuarios::model()->findAll(), 'usua_fechacreado', 'usua_fechacreado'),
-		),
-		array(
-			'name' => 'usua_creadopor',
-			'value' => '$data->usua_creadopor',
-			// 'filter'=> CHtml::listData(Usuarios::model()->findAll(), 'usua_creadopor', 'usua_creadopor'),
-		),
-		array(
-			'name' => 'usua_fechamodificado',
-			'value' => '$data->usua_fechamodificado',
-			// 'filter'=> CHtml::listData(Usuarios::model()->findAll(), 'usua_fechamodificado', 'usua_fechamodificado'),
-		),
-		array(
-			'name' => 'usua_modificadopor',
-			'value' => '$data->usua_modificadopor',
-			// 'filter'=> CHtml::listData(Usuarios::model()->findAll(), 'usua_modificadopor', 'usua_modificadopor'),
-		),
-		*/
 		array(
 			'htmlOptions' => array('nowrap'=>'nowrap'),
 			'class'=>'booster.widgets.TbButtonColumn',
@@ -88,28 +57,12 @@ $this->menu=array(
 	            'view' => array(
 	                'options' => array(
 	                	'title' => Yii::t('app', 'Ver'),
-	                	// 'ajax'=>array(
-                  //           'type'=>'POST',
-                  //           'url'=>"js:$(this).attr('href')",
-                  //           'success'=>'function(data) { 
-                  //           	$("#viewModal .modal-body").html(data); 
-                  //           	$("#viewModal").modal(); 
-                  //           }'
-                  //       ),
 	                ),
 	            ),
 	            'update' => array(
-	            	'visible' => '$data->usua_id != Yii::app()->session["login_usuarioid"] and !empty(Yii::app()->session["permisosRol"]["Usuarios"]["Modificar"]) and ($data->usua_id != Yii::app()->session["login_usuarioid"])',
+	            	'visible' => '!empty(Yii::app()->session["permisosRol"]["Usuarios"]["Modificar"])',
 	                'options' => array(
 	                	'title' => Yii::t('app', 'Modificar'),
-	                	// 'ajax'=>array(
-                  //           'type'=>'POST',
-                  //           'url'=>"js:$(this).attr('href')",
-                  //           'success'=>'function(data) { 
-                  //           	$("#viewModal .modal-body").html(data); 
-                  //           	$("#viewModal").modal();
-                  //           }'
-                  //       ),
 	                ),
 	            ),            
 	        ),

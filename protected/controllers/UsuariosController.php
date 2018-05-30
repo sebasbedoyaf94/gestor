@@ -97,30 +97,23 @@ class UsuariosController extends Controller
 	public function actionCreate()
 	{
 		$model=new Usuarios;
-		// $modelServicios =Servicios::model()->with('programas')->findAll(
-		// 	array('condition'=>"serv_habilitado='Si'",
-		// 	'order' => 'prog_nombre ASC',)
-		// );
-
-		Yii::app()->user->setFlash('success', "Entro.");
 
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Usuarios']) and isset($_POST['ServiciosSeleccionados']))
+		if(isset($_POST['Usuarios']))
 		{
-			$_POST['Usuarios']['usua_creadopor'] = Yii::app()->session['login_usuarioid'];
-			$_POST['Usuarios']['usua_modificadopor'] = Yii::app()->session['login_usuarioid'];
+			$model->attributes=$_POST['Usuarios'];
+			$model->usua_creadopor = Yii::app()->session['login_usuarioid'];
+			$model->usua_fechacreado = date('Y-m-d H:i:s');
+			$model->usua_modificadopor = Yii::app()->session['login_usuarioid'];
+			$model->usua_fechamodificado = date('Y-m-d H:i:s');
 
 			$model->attributes=$_POST['Usuarios'];
-			echo "<br>";
-			print_r($model->attributes);
-			die;
 
 			if($model->save())
 			{
 				Yii::app()->user->setFlash('success', "Creación exitosa.");
-
 				$this->redirect(array('admin'));
 			}
 		}
