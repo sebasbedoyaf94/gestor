@@ -73,9 +73,9 @@ $(document).ready(function(){
 					                            
 												//Menu Roles
 							                    array(
-					                            	'label'=>'<span class="glyphicon glyphicon-list text-danger"></span> Roles ',
-					                            	'url'=>array('/roles/admin'), 
-					                        		'visible' => (!empty(Yii::app()->session['permisosRol']['Usuarios']) and !Yii::app()->user->isGuest) ? true : false,
+					                            	'label'=>'<span class="glyphicon glyphicon-list text-danger"></span> Reportes ',
+					                            	'url'=>array('/reportes/create'), 
+					                        		'visible' => (!empty(Yii::app()->session['permisosRol']['Reportes']) and !Yii::app()->user->isGuest) ? true : false,
 					                            ),
 
 							                    //Menu Usuarios

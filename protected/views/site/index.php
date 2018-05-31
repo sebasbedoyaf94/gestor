@@ -15,14 +15,6 @@ $this->pageTitle=Yii::app()->name;
 			</a>
 		<?php endif ?>
 
-		<!-- ROLES -->
-		<?php if (!empty(Yii::app()->session['permisosRol']['Roles'])): ?>
-			<a href="../roles/admin" class="col-xs-12 col-sm-3">
-				<h4>Roles</h4>
-				<img src="<?php echo Yii::app()->baseUrl.'/images/roles.png'; ?>" class="img-responsive img-thumbnail img-menu well" alt=''/>
-			</a>
-		<?php endif ?>
-
 		<!-- CLIENTES -->
 		<?php if (!empty(Yii::app()->session['permisosRol']['Clientes'])): ?>	
 			<a href="../clientes/admin" class="col-xs-12 col-sm-3">
@@ -30,9 +22,7 @@ $this->pageTitle=Yii::app()->name;
 				<img src="<?php echo Yii::app()->baseUrl.'/images/clientes.png'; ?>" class="img-responsive img-thumbnail img-menu well" alt=''/>
 			</a>
 		<?php endif ?>
-	</div>
 
-	<div class="row">
 		<!-- PROYECTOS -->
 		<?php if (!empty(Yii::app()->session['permisosRol']['Proyectos'])): ?>	
 			<a href="../proyectos/admin" class="col-xs-12 col-sm-3">
@@ -40,7 +30,9 @@ $this->pageTitle=Yii::app()->name;
 				<img src="<?php echo Yii::app()->baseUrl.'/images/contratos.png'; ?>" class="img-responsive img-thumbnail img-menu well" alt=''/>
 			</a>
 		<?php endif ?>
+	</div>
 
+	<div class="row">
 		<!-- ANALISTAS PROYECTOS -->
 		<?php if (!empty(Yii::app()->session['permisosRol']['Programas'])): ?>	
 			<a href="../usuariosProyectos/admin" class="col-xs-12 col-sm-3">
@@ -54,6 +46,14 @@ $this->pageTitle=Yii::app()->name;
 			<a href="../cargaMasiva/admin" class="col-xs-12 col-sm-3">
 				<h4>Documentación</h4>
 				<img src="<?php echo Yii::app()->baseUrl.'/images/novedades.png'; ?>" class="img-responsive img-thumbnail img-menu well" alt=''/>
+			</a>
+		<?php endif ?>
+
+		<!-- REPORTES -->
+		<?php if (!empty(Yii::app()->session['permisosRol']['Reportes'])): ?>
+			<a href="../reportes/create" class="col-xs-12 col-sm-3">
+				<h4>Reportes</h4>
+				<img src="<?php echo Yii::app()->baseUrl.'/images/turnos.png'; ?>" class="img-responsive img-thumbnail img-menu well" alt=''/>
 			</a>
 		<?php endif ?>
 	</div>
