@@ -60,14 +60,66 @@ class ReportesController extends Controller
 
 			$SocketsHelper = new SocketsHelper($provider);
 			$data = $SocketsHelper->sendAndReceive($trama);
-			echo "<pre>";
-			print_r($data);
-			die;
+			$this->exportarData($model->rep_tipo, $data);
 		} catch (Exception $e) {
 			
 			//$this->generarLogs($model->attributes,'Trama Socket no enviado al server '.Yii::app()->params['strHost'].'('.$e->getMessage().')');
 			print_r("Error enviando al server: " . $e->getMessage());	
 			die;
+		}
+	}
+
+	public function exportarData($tipoRep, $data){
+		Yii::Import('application.extensions.ECSVExport');
+		$tramaStart = substr($data, 0, 11);
+
+		if($tramaStart == "779,001,000"){
+			$dat = substr($data, 12);
+			$dat = str_replace("~", "", $dat);
+			$registros = explode("||", $dat);
+			if($tipoRep == 1){
+				for($i=0; $i < count($registros); $i++){
+					$datos = explode("##", $registros[$i]);
+					$dataProvider[$i] = array(
+						'Cliente' => $datos[0],
+						'Proyecto' => $datos[1],
+						'Nombre Archivo' => $datos[2],
+						'Fase' => $datos[3],
+						'Descripcion' => $datos[4],
+						'Analista' => $datos[5] . " " . $datos[6],
+						'Fecha Hora Carga' => $datos[7]
+					);
+				}
+				$nombre = "Reporte_Cargas";
+			}
+			else {
+				for($i=0; $i < count($registros); $i++){
+					$datos = explode("##", $registros[$i]);
+					$dataProvider[$i] = array(
+						'Cliente' => $datos[0],
+						'Proyecto' => $datos[1],
+						'URL Pruebas' => $datos[2],
+						'Ruta Doc Funcional' => $datos[3],
+						'Ruta Doc Tecnica' => $datos[4],
+						'Observaciones' => $datos[5],
+						'Usuario Pruebas' => $datos[6],
+						'Contrasena Pruebas' => $datos[7],
+						'Analista' => $datos[8] . " " . $datos[9],
+						'Fecha Hora Creacion' => $datos[10]
+					);
+				}
+				$nombre = "Reporte_Checklist";
+			}
+
+			$csv = new ECSVExport($dataProvider);
+			$csv->convertActiveDataProvider=false;
+			$output = $csv->toCSV();
+			$filename= $nombre.".csv";
+			Yii::app()->getRequest()->sendFile($filename, $output, "text/csv", false);
+			exit();
+		}
+		else {
+			Yii::app()->user->setFlash('error', "No hay datos sobre la información consultada.");
 		}
 	}
 
@@ -102,9 +154,12 @@ class ReportesController extends Controller
 			}
 		}
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		if (Yii::app()->request->isAjaxRequest) {
+			$this->renderPartial('create', array('model'=>$model), false, true);
+		}
+		else{
+			$this->render('create',array('model'=>$model));
+		}
 	}
 
 	/**
