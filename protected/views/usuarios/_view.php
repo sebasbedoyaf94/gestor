@@ -4,14 +4,18 @@
 	<?php echo CHtml::link(CHtml::encode($data->usua_nombre.' '.$data->usua_apellidos),array('view','id'=>$data->usua_id)); ?>
 	<br />
 
-	<!-- <b><?php echo CHtml::encode($data->getAttributeLabel('usua_nombre')); ?>:</b>
-	<?php echo CHtml::encode($data->usua_nombre); ?>
-	<br /> -->
-
-<!-- 	<b><?php echo CHtml::encode($data->getAttributeLabel('usua_apellidos')); ?>:</b>
-	<?php echo CHtml::encode($data->usua_apellidos); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('usua_cedula')); ?>:</b>
+	<?php echo CHtml::encode($data->usua_cedula); ?>
 	<br />
- -->
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('usua_celular')); ?>:</b>
+	<?php echo CHtml::encode($data->usua_celular); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('usua_correo')); ?>:</b>
+	<?php echo CHtml::encode($data->usua_correo); ?>
+	<br />
+ 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('usua_usuariored')); ?>:</b>
 	<?php echo CHtml::encode($data->usua_usuariored); ?>
 	<br />

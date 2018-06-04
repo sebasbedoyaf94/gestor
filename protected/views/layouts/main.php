@@ -63,8 +63,8 @@ $(document).ready(function(){
 					                'items'=>array(
 					                	//Menu HOME
 										array('label'=>'<span class="glyphicon glyphicon-home text-danger"></span> Home', 'url'=>array('/site/index'), 'itemOptions'=>array('aria-hidden'=>'true'), 'visible'=>!Yii::app()->user->isGuest),
-										//Menu Iniciar Sesion
-										array('label'=>'<span class="glyphicon glyphicon-log-in text-danger"></span> Iniciar Sesion', 'url'=>array('/site/login'), 'itemOptions'=>array('class'=>'pull-right'), 'visible'=>Yii::app()->user->isGuest),
+										//Menu Registrarse
+										array('label'=>'<span class="glyphicon glyphicon-log-in text-danger"></span> Registrarse', 'url'=>array('/usuarios/create'), 'itemOptions'=>array('class'=>'pull-right'), 'visible'=>Yii::app()->user->isGuest),
 										
 										//DropDown Maestros
 										array(

@@ -47,6 +47,51 @@ class UsuariosController extends Controller
 		);
 	}
 
+	public function enviarEmail($model)
+	{
+		
+		Yii::import('application.extensions.phpmailer.JPhpMailer');
+		$mail = new JPhpMailer;
+		$mail->IsSMTP();
+		$mail->IsHTML(true);
+		$mail->Host = 'smtp.gmail.com';
+
+		$mail->SMTPAuth = true; //true cuando se envia con Usarname y Password
+		//$mail->Username = 'juancry1011@gmail.com';
+		//$mail->Password = 'mimamamemima';
+		$mail->SetFrom('Notificaciones@allus.com.co', 'Notificación');
+		$mail->Subject = utf8_decode('Credenciales Gestor Documentación');
+		$mail->AltBody = "";
+		
+		$contentHtml = '
+		 <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#f5f5f5" color="#505050"> 
+			<tr bgcolor="#e61e38" color="#f8f8f8">
+			 <td>
+			   <h1>Notificación Creación Usuario</h1>
+			 </td>
+			</tr>
+			 
+			<tr>
+			 <td>
+			   <h2>Prueba</h2>
+			 </td>
+			</tr>
+			 
+			<tr>
+			 <td>
+			  <b>Datos del registro:</b>
+			  <p>Prueba</p>
+			 </td>
+			</tr>
+		</table>';
+
+		$mail->MsgHTML(utf8_decode($contentHtml));
+		$mail->AddAddress($model->usua_correo, utf8_decode($model->usua_nombre));
+		
+		$mail->Send();
+
+	}
+
 	/**
 	* Displays a particular model.
 	* @param integer $id the ID of the model to be displayed
@@ -104,15 +149,18 @@ class UsuariosController extends Controller
 		if(isset($_POST['Usuarios']))
 		{
 			$model->attributes=$_POST['Usuarios'];
+			$model->usua_usuariored = 'jrios';
+			$model->usua_contrasena = md5($model->usua_cedula);
 			$model->usua_creadopor = Yii::app()->session['login_usuarioid'];
 			$model->usua_fechacreado = date('Y-m-d H:i:s');
 			$model->usua_modificadopor = Yii::app()->session['login_usuarioid'];
 			$model->usua_fechamodificado = date('Y-m-d H:i:s');
 
-			$model->attributes=$_POST['Usuarios'];
-
+			$this->enviarEmail($model);
+			die;
 			if($model->save())
 			{
+				$this->enviarEmail($model);
 				Yii::app()->user->setFlash('success', "Creación exitosa.");
 				$this->redirect(array('admin'));
 			}
@@ -202,11 +250,6 @@ class UsuariosController extends Controller
 			if($model->save())
 			{
 				Yii::app()->user->setFlash('success', "Modificación exitosa.");
-
-				$deleteUS=UsuariosServicios::model()->deleteAll(array("condition"=>"usuaserv_usua_id='$model->usua_id'"));
-
-				$crearUS= $this->crearUsuarioServicios($_POST['ServiciosSeleccionados'],$model);
-
 				$this->redirect(array('admin'));
 			}
 		}
