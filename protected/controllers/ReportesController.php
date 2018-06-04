@@ -48,6 +48,29 @@ class ReportesController extends Controller
 		);
 	}
 
+	public function enviarTramaSocket($model)
+	{	
+		try {
+			// Enviar trama al socket en el server principal
+			Yii::Import('application.extensions.SocketsHelper');
+
+			$provider = array('strHost' => Yii::app()->params['strHost'], 'intPort' => Yii::app()->params['intPort'], 'bolAutoinit' => Yii::app()->params['bolAutoinit']);
+
+			$trama = "779,000,111,".$model->rep_tipo.",".$model->rep_proy_id.",".$model->rep_fechaInicio." 00:00:00,".$model->rep_fechaFin." 23:59:59,~";
+
+			$SocketsHelper = new SocketsHelper($provider);
+			$data = $SocketsHelper->sendAndReceive($trama);
+			echo "<pre>";
+			print_r($data);
+			die;
+		} catch (Exception $e) {
+			
+			//$this->generarLogs($model->attributes,'Trama Socket no enviado al server '.Yii::app()->params['strHost'].'('.$e->getMessage().')');
+			print_r("Error enviando al server: " . $e->getMessage());	
+			die;
+		}
+	}
+
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -73,8 +96,10 @@ class ReportesController extends Controller
 		if(isset($_POST['Reportes']))
 		{
 			$model->attributes=$_POST['Reportes'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->rep_id));
+			$this->enviarTramaSocket($model);
+			if($model->save()){
+				//$this->redirect(array('view','id'=>$model->rep_id));
+			}
 		}
 
 		$this->render('create',array(

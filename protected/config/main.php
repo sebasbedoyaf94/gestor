@@ -114,8 +114,8 @@ return array(
 		'uploadPath'=>dirname(__FILE__).'/../../uploads',
 		'uploadUrl'=>'uploads',
 
-		'strHost' => '272.20.73.71',//parametros para enviar socket (SERVIDOR PRINCIPAL)
-		'intPort' => '9848',//parametros para enviar socket
+		'strHost' => '127.0.0.1',//parametros para enviar socket (SERVIDOR PRINCIPAL)
+		'intPort' => '9779',//parametros para enviar socket
 		'bolAutoinit' => TRUE,//parametros para enviar socket
 	),
 );

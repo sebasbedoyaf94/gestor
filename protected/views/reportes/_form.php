@@ -28,27 +28,6 @@
 		</div>
 
 		<div class="col-xs-12 col-sm-6">
-	        <?php echo $form->dropDownListGroup($model, 'rep_fase',
-	            array(
-	                'wrapperHtmlOptions' => array(
-	                    'class' => '',
-	                ),
-	                'widgetOptions' => array(
-	                	'data' => array(
-	                		'DISEÑO E IMPLENTACION'=>'DISEÑO E IMPLENTACIÓN',
-	                        'GESTION DEL ENTORNO'=>'GESTIÓN DEL ENTORNO',
-	                        'EJECUCION DE LAS PRUEBAS'=>'EJECUCIÓN DE LAS PRUEBAS',
-	                        'INFORME DE INCIDENCIAS'=>'INFORME DE INCIDENCIAS',
-	                	),
-	                    'htmlOptions' => array(
-	                        'empty'=>'-- Seleccione una Fase --',
-	                    ),
-	                ),
-	            )
-	        ); ?>
-    	</div>
-
-		<div class="col-xs-12 col-sm-6">
 			<?php echo $form->datePickerGroup($model,'rep_fechaInicio',array('widgetOptions'=>array('options'=>array('format'=>'yyyy-mm-dd'),'htmlOptions'=>array('class'=>'')), 'prepend'=>'<i class="glyphicon glyphicon-calendar"></i>')); ?>
 		</div>
 

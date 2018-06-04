@@ -32,7 +32,7 @@ class Reportes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('rep_id, rep_fechaInicio, rep_fechaFin, rep_fase, rep_proy_id, rep_tipo', 'required'),
+			array('rep_fechaInicio, rep_fechaFin, rep_proy_id, rep_tipo', 'required'),
 			array('rep_id, rep_proy_id, rep_tipo', 'numerical', 'integerOnly'=>true),
 			array('rep_fase', 'length', 'max'=>100),
 			// The following rule is used by search().
