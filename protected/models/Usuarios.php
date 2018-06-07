@@ -58,7 +58,7 @@ class Usuarios extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('usua_nombre, usua_apellidos, usua_cedula, usua_celular, usua_correo, usua_usuariored, usua_rol_id, usua_creadopor, usua_modificadopor', 'required'),
+			array('usua_nombre, usua_apellidos, usua_cedula, usua_celular, usua_correo, usua_usuariored, usua_contrasena, usua_rol_id, usua_creadopor, usua_modificadopor', 'required'),
 			array('usua_rol_id, usua_cedula, usua_celular, usua_jefe_id, usua_creadopor, usua_modificadopor', 'numerical', 'integerOnly'=>true),
 			array('usua_nombre, usua_apellidos, usua_usuariored, usua_correo', 'length', 'max'=>50),
 			array('usua_habilitado', 'length', 'max'=>2),
@@ -116,7 +116,7 @@ class Usuarios extends CActiveRecord
 			'usua_cedula' => 'Cédula',
 			'usua_celular' => 'Celular',
 			'usua_correo' => 'Correo electrónico',
-			'usua_usuariored' => 'Usuario de red',
+			'usua_usuariored' => 'Usuario',
 			'usua_contrasena' => 'Contraseña',
 			'usua_jefe_id' => 'Jefe',
 			'usua_rol_id' => 'Rol',

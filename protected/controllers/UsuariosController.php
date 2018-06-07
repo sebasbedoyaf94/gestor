@@ -33,8 +33,7 @@ class UsuariosController extends Controller
 			),
 			array('allow',
 				'actions'=>array('create'),
-				'users'=>array('@'),
-				'expression'=>"!empty(Yii::app()->session['permisosRol']['Usuarios']['Crear'])",
+				'users'=>array('*'),
 			),
 			array('allow',
 				'actions'=>array('update'),
@@ -149,20 +148,29 @@ class UsuariosController extends Controller
 		if(isset($_POST['Usuarios']))
 		{
 			$model->attributes=$_POST['Usuarios'];
-			$model->usua_usuariored = 'jrios';
-			$model->usua_contrasena = md5($model->usua_cedula);
+			$model->usua_contrasena = md5($model->usua_contrasena);
 			$model->usua_creadopor = Yii::app()->session['login_usuarioid'];
 			$model->usua_fechacreado = date('Y-m-d H:i:s');
 			$model->usua_modificadopor = Yii::app()->session['login_usuarioid'];
 			$model->usua_fechamodificado = date('Y-m-d H:i:s');
 
-			$this->enviarEmail($model);
-			die;
+			if(($model->usua_creadopor == "") || ($model->usua_modificadopor == "")){
+				$model->usua_creadopor = 1;
+				$model->usua_modificadopor = 1;
+				$formRegistro = true;
+			}
+
 			if($model->save())
 			{
-				$this->enviarEmail($model);
-				Yii::app()->user->setFlash('success', "Creación exitosa.");
-				$this->redirect(array('admin'));
+				if($formRegistro == true){
+					Yii::app()->user->setFlash('success', "Creación exitosa.");
+					$this->redirect(array('site/login'));
+				} else {
+					//$this->enviarEmail($model);
+					Yii::app()->user->setFlash('success', "Creación exitosa.");
+					$this->redirect(array('admin'));
+				}
+				
 			}
 		}
 

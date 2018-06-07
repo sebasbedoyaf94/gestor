@@ -34,6 +34,14 @@
 		</div>
 
 		<div class="col-xs-12 col-sm-6">
+			<?php echo $form->textFieldGroup($model,'usua_usuariored',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'')))); ?>
+		</div>
+
+		<div class="col-xs-12 col-sm-6">
+			<?php echo $form->textFieldGroup($model,'usua_contrasena',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'')))); ?>
+		</div>
+
+		<div class="col-xs-12 col-sm-6">
 			<?php echo $form->dropDownListGroup($model,'usua_rol_id',
 				array(
 					'wrapperHtmlOptions' => array(

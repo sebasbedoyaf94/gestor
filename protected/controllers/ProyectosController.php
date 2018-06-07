@@ -107,8 +107,10 @@ class ProyectosController extends Controller
 		if(isset($_POST['Proyectos']))
 		{
 			$model->attributes=$_POST['Proyectos'];
-			if($model->save())
+			if($model->save()){
+				Yii::app()->user->setFlash('success', "Registro modificado exitosamente.");
 				$this->redirect(array('view','id'=>$model->proy_id));
+			}
 		}
 
 		$this->render('update',array(
