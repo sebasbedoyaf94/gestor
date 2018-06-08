@@ -27,17 +27,17 @@ $this->menu=array(
 		),
 		array(
 			'name' => 'carga_proy_id',
-			'value' => '$data->cargaProy->proy_nombre',
+			'value' => '$data->cargaProy->proy_nombre . " (". $data->cargaProy->proyCli->cli_nombre . ")"',
 			'filter' => CHtml::textField('cargaProy_proy_nombre', Yii::app()->request->getParam('cargaProy_proy_nombre')),
 		),
 		array(
 			'name' => 'carga_fase',
 			'value' => '$data->carga_fase',
 		),
-		array(
+		/*array(
 			'name' => 'carga_descripcion',
 			'value' => '$data->carga_descripcion',
-		),
+		),*/
 		array(
 			'htmlOptions' => array('nowrap'=>'nowrap'),
 			'class'=>'booster.widgets.TbButtonColumn',

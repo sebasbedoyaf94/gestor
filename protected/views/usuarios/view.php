@@ -6,10 +6,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Listar Usuarios','url'=>array('index')),
+	array('label'=>'Listar Usuarios','url'=>array('index'),'visible'=>!empty(Yii::app()->session['permisosRol']['Usuarios']['Crear'])),
 	array('label'=>'Crear Usuario','url'=>array('create'),'visible'=>!empty(Yii::app()->session['permisosRol']['Usuarios']['Crear'])),
 	array('label'=>'Modificar Usuario','url'=>array('update','id'=>$model->usua_id),'visible'=>!empty(Yii::app()->session['permisosRol']['Usuarios']['Modificar'])),
-	array('label'=>'Administrar Usuarios','url'=>array('admin')),
+	array('label'=>'Administrar Usuarios','url'=>array('admin'),'visible'=>!empty(Yii::app()->session['permisosRol']['Usuarios']['Crear'])),
 );
 ?>
 

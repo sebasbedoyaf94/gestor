@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Listar Proyectos', 'url'=>array('index')),
-	array('label'=>'Crear Proyectos', 'url'=>array('create')),
+	array('label'=>'Crear Proyectos', 'url'=>array('create'), 'visible'=>!empty(Yii::app()->session['permisosRol']['Proyectos']['Crear']),),
 );
 ?>
 

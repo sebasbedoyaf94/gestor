@@ -58,8 +58,8 @@ class ReportesController extends Controller
 
 			$trama = "779,000,111,".$model->rep_tipo.",".$model->rep_proy_id.",".$model->rep_fechaInicio." 00:00:00,".$model->rep_fechaFin." 23:59:59,~";
 
-			$SocketsHelper = new SocketsHelper($provider);
-			$data = $SocketsHelper->sendAndReceive($trama);
+			$SocketsHelper = new SocketsHelper($provider); // Conexion al socket
+			$data = $SocketsHelper->sendAndReceive($trama); // Envia data y recepción de respuesta
 			$this->exportarData($model->rep_tipo, $data);
 		} catch (Exception $e) {
 			

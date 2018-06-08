@@ -7,12 +7,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Crear Proyectos', 'url'=>array('create')),
+	array('label'=>'Crear Proyectos', 'url'=>array('create'), 'visible'=>!empty(Yii::app()->session['permisosRol']['Proyectos']['Crear']),),
 	array('label'=>'Administrar Proyectos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Proyectoses</h1>
+<h1>Proyectos</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

@@ -24,12 +24,12 @@ $this->menu=array(
 'columns'=>array(
 		array(
 			'name' => 'usuaproy_usua_id',
-			'value' => '$data->usuaproyUsua->usua_nombre',
+			'value' => '$data->usuaproyUsua->usua_nombre . " " . $data->usuaproyUsua->usua_apellidos',
 			'filter' => CHtml::textField('usuaProy_usua_nombre', Yii::app()->request->getParam('usuaProy_usua_nombre')),
 		),
 		array(
 			'name' => 'usuaproy_proy_id',
-			'value' => '$data->usuaproyProy->proy_nombre',
+			'value' => '$data->usuaproyProy->proy_nombre . " (" . $data->usuaproyProy->proyCli->cli_nombre . ")"',
 			'filter' => CHtml::textField('usuaProy_proy_nombre', Yii::app()->request->getParam('usuaProy_proy_nombre')),
 		),
 		array(

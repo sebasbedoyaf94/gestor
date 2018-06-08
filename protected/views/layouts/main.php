@@ -102,14 +102,14 @@ $(document).ready(function(){
 												//Menu Analistas Proyectos
 							                    array(
 							                        'label' => '<span class="glyphicon glyphicon-list text-danger"></span> Analistas Proyectos',
-							                        'url'=>array('/programas/admin'),
+							                        'url'=>array('/usuariosProyectos/admin'),
 							                        'visible' => (!empty(Yii::app()->session['permisosRol']['Programas']) and !Yii::app()->user->isGuest) ? true : false,
 							                    ),
 
 							                    //Menu Documentación
 							                    array(
 					                            	'label'=>'<span class="glyphicon glyphicon-list text-danger"></span> Documentación ',
-					                            	'url'=>array('/turnos/admin'), 
+					                            	'url'=>array('/cargaMasiva/admin'), 
 					                        		'visible' => (!empty(Yii::app()->session['permisosRol']['Turnos']) and !Yii::app()->user->isGuest) ? true : false,
 					                            ),
 					                        )

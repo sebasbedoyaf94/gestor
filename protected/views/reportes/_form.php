@@ -18,7 +18,9 @@
 						'class' => '',
 					),
 					'widgetOptions' => array(
-						'data' => CHtml::listData(Proyectos::model()->findAll(array("condition"=>"proy_habilitado='Si'")), 'proy_id', 'proy_nombre'),
+						'data' => CHtml::listData(Proyectos::model()->findAll(array("condition"=>"proy_habilitado='Si'")), 'proy_id', function($proy) {
+							    return CHtml::encode($proy->proy_nombre . " (" . $proy->proyCli->cli_nombre.")");
+							}),
 						'htmlOptions' => array(
 							'empty'=>'-- Selecciona un Proyecto --',
 						),

@@ -9,8 +9,8 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Listar Proyectos', 'url'=>array('index')),
-	array('label'=>'Crear Proyectos', 'url'=>array('create')),
-	array('label'=>'Actualizar Proyectos', 'url'=>array('update', 'id'=>$model->proy_id)),
+	array('label'=>'Crear Proyectos', 'url'=>array('create'), 'visible'=>!empty(Yii::app()->session['permisosRol']['Proyectos']['Crear']),),
+	array('label'=>'Actualizar Proyectos', 'url'=>array('update', 'id'=>$model->proy_id), 'visible'=>!empty(Yii::app()->session['permisosRol']['Proyectos']['Modificar']),),
 	array('label'=>'Administrar Proyectos', 'url'=>array('admin')),
 );
 ?>
