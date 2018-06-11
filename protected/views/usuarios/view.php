@@ -27,6 +27,9 @@ $this->menu=array(
 				// 'usua_id',
 				'usua_nombre',
 				'usua_apellidos',
+				'usua_cedula',
+				'usua_celular',
+				'usua_correo',
 				'usua_usuariored',
 				array(
 			        'name'=>'usua_rol_id',

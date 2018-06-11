@@ -141,7 +141,7 @@ class UsuariosController extends Controller
 	public function actionCreate()
 	{
 		$model=new Usuarios;
-
+		$formRegistro = false;
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
@@ -168,7 +168,8 @@ class UsuariosController extends Controller
 				} else {
 					//$this->enviarEmail($model);
 					Yii::app()->user->setFlash('success', "Creación exitosa.");
-					$this->redirect(array('admin'));
+					$this->redirect(array('view','id'=>$model->usua_id));
+					//$this->redirect(array('admin'));
 				}
 				
 			}

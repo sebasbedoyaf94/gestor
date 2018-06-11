@@ -34,10 +34,10 @@ $this->menu=array(
 			'name' => 'carga_fase',
 			'value' => '$data->carga_fase',
 		),
-		/*array(
+		array(
 			'name' => 'carga_descripcion',
 			'value' => '$data->carga_descripcion',
-		),*/
+		),
 		array(
 			'htmlOptions' => array('nowrap'=>'nowrap'),
 			'class'=>'booster.widgets.TbButtonColumn',
